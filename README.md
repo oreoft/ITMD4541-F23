@@ -1,4 +1,4 @@
-# ITMD4541-F23 - Project Name
+# ITMD4541-F23
 
 Welcome to the ITMD4541-F23 project! This project is an assignment project for my IIT Study 514 course.
 
@@ -10,20 +10,19 @@ You can click on the links below and then view the information on each lab's pub
 ## Lab1 - [Link](lab-1/index.html)
 
 Lab1 is our course's first task, and it includes the following:
-- Task 1: Describe the content and requirements of Task 1.
-- Task 2: Describe the content and requirements of Task 2.
-- Task 3: Describe the content and requirements of Task 3.
+- Task 1: Create a new public GitHub repository for the class lab work (ITMD441 or ITMD541), checking the option to add a README file for future use.
 
-Please visit the Lab1 link to see more details.
+- Task 2: Develop an index.html webpage in the repository's root directory, serving as an introductory landing page for the class and yourself, including background information on your web experience. Link an external CSS file for styling.
+
+Please visit the Lab1 [Link](lab-1/index.html) to see more details.
 
 ## Lab2 - [Link](lab-2/index.html)
 
 Lab2 is our course's second task, and it includes the following:
-- Task 1: Describe the content and requirements of Task 1.
-- Task 2: Describe the content and requirements of Task 2.
-- Task 3: Describe the content and requirements of Task 3.
 
-Please visit the Lab2 link to see more details.
+- Task 1: Modify the provided HTML file (index.html) to make it match the sample HTML provided in the assignment. Follow the instructions in index.html, and only add your name as instructed.
+
+Please visit the Lab2 [Link](lab-2/index.html) to see more details.
 
 ## Contact Information
 
