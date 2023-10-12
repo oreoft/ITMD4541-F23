@@ -24,6 +24,19 @@ Lab2 is our course's second task, and it includes the following:
 
 Please visit the Lab2 [Link](lab-2/index.html) to see more details.
 
+## Lab3 - [Link](lab-3/index.html)
+
+Lab3 is our course's second task, and it includes the following:
+
+- Task 1: Build a simple HTML and CSS user interface for a tip calculator using the provided wireframe mockup as a guide, including 4 text inputs, 1 range slider input, and appropriate labels and text.
+- 
+- Task 2: Add input/change event listeners to the form to read user input values when triggered, calculate the tip amount and total bill, and output the values to the disabled input fields.
+- 
+- Task 3: Style the UI with external CSS and JS files, ensure it is responsive on desktop and mobile, and publish the finished work on GitHub repository and pages.
+
+
+Please visit the Lab3 [Link](lab-3/index.html) to see more details.
+
 ## Contact Information
 
 If you have any questions or suggestions, you can reach out to me through the following means:

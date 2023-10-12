@@ -17,8 +17,9 @@ body {
 	padding: 20px;
 	border-radius: 8px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	width: 50%; /* Adjust as needed */
+	width: 80%; /* Adjust as needed */
 	max-width: 600px; /* Adjust as needed */
+	margin: auto; /* Center the container */
 }
 
 h1, h2 {
@@ -27,41 +28,29 @@ h1, h2 {
 
 .form-group {
 	margin-bottom: 20px;
-	margin-right: 60px;
 	text-align: right;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 label {
-	display: inline-block;
-	margin-bottom: 5px;
-	margin-right: 10px; /* Add a margin to create space between label and input */
+	flex: 1; /* Take 100% of the available space */
+	margin-top: 8px;
+	margin-right: 20px;
 }
 
 input {
-	width: calc(100%); /* Adjust as needed */
+	flex: 2; /* Take 200% of the available space */
+	width: calc(100% - 10px); /* Adjust as needed with padding and box-sizing */
 	padding: 8px;
+	margin-right: 45px;
 	box-sizing: border-box;
 }
 
-/* Align input with label */
-.form-group input {
-	width: calc(70%); /* Adjust as needed */
-}
-
-input[disabled] {
-	background-color: #eee;
-}
 
 /* Media Query for mobile adaptation */
 @media screen and (max-width: 768px) {
 	.calculator-container {
-		width: 80%;
-	}
-}
-
-/* Media Query for smaller screens */
-@media screen and (max-width: 600px) {
-	.calculator-container {
-		width: 100%;
+		width: 90%;
 	}
 }
