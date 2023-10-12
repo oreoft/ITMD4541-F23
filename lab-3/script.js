@@ -4,13 +4,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	form.addEventListener("input", function () {
 		var billTotalO = document.getElementById("billTotal").value
 		console.log(billTotalO)
-		if (!isNumeric(billTotalO)) {
-			alert("Please enter a valid number for Bill Total.");
+		// 先检查值是否为空字符串
+		if (billTotalO === "") {
 			clear()
 			return;
 		}
-		// 先检查值是否为空字符串
-		if (billTotalO === "") {
+		if (!isNumeric(billTotalO)) {
+			alert("Please enter a valid number for Bill Total.");
 			clear()
 			return;
 		}
