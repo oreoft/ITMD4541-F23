@@ -2,165 +2,137 @@
 
 #flex-section1 ul {
 	display: flex;
+	padding: 0px;
 	list-style: none;
-	padding: 0;
-	justify-content: space-evenly; /* To evenly space the items */
-  }
-  
-  /* end Flexbox Part 1 */
-  
-  
-  /* Flexbox Part 2 */
-  
-  #flex-section2 ul {
+	justify-content: space-evenly;
+}
+
+/* end Flexbox Part 1 */
+
+
+/* Flexbox Part 2 */
+
+#flex-section2 ul {
 	display: flex;
-	list-style: none;
-	padding: 0;
-	margin: 0; 
-  }
-  
-  #flex-section2 li {
-	width: 225px; /* Set a fixed width */
-	height: 155px; /* Set a fixed height */
 	margin: 0;
-  }
-  
-  #flex-section2 .item1 {
+	padding: 0;
+	list-style: none;
+}
+
+#flex-section2 li {
+	flex: 1;
+}
+
+#flex-section2 .item1 {
 	order: 1;
-  }
-  
-  #flex-section2 .item2 {
+}
+
+#flex-section2 .item2 {
 	order: 3;
-  }
-  
-  #flex-section2 .item3 {
+}
+
+#flex-section2 .item3 {
 	order: 2;
-  }
-  
-  /* end Flexbox Part 2 */
-  
-  
-  /* Flexbox Part 3 */
-  
-  #flex-section3 .box {
+}
+
+/* end Flexbox Part 2 */
+
+
+/* Flexbox Part 3 */
+
+#flex-section3 .box {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
-  
-  #flex-section3 .tags ul {
-	list-style: none;
-	padding: 0;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 5px;
-  }
-  
-  #flex-section3 .tags li {
-	background-color: #c1c1c1;
-	color: #000000;
-	padding: 5px 5px;
-	border-radius: 5px;
-  }
-  
-  
-  /* end Flexbox Part 3 */
-  
-  
-  /* Grid Part 1 */
-  
-  #grid-section1 .grid {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	grid-gap: 20px;
-  }
+}
 
-  #grid-section1 .greybox {
-	width: 150px; /* Set the width to 150 pixels */
-	height: 95px; /* Set the height to 95 pixels */
-  }
-  
-  /* end Grid Part 1 */
-  
-  
-  /* Grid Part 2 */
-  #grid-section2 .grid {
+#flex-section3 .tags ul {
+	list-style: none;
+	display: flex;
+	padding: 0;
+	margin: 0;
+	flex-wrap: wrap;
+}
+
+/* end Flexbox Part 3 */
+
+
+/* Grid Part 1 */
+
+#grid-section1 .grid {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 1fr;
-	gap: 10px;
-  }
-  
-  #grid-section2 .gridboxred {
-	grid-column: 1 / span 1;
-	grid-row: 1 / span 1;
-	background-color: rgb(215, 84, 84);
-	width: 456px;
-	height: 122px;
-	margin: auto 0; /* Vertically center the red box */
-  }
-  
-  #grid-section2 .gridboxblue {
-	grid-column: 1 / span 1;
-	grid-row: 1 / span 1;
-	background-color: rgba(0, 0, 255, 0.5); /* Semi-transparent blue */
-	width: 451px;
-	height: 348px;
-	margin-left: 100%; /* Overlap the red box by 50% */
-	transform: translateX(-50%); /* Adjust position to center horizontally */
-  }
-  
-  /* end Grid Part 2 */
-  
-  
-  /* Grid Part 3 */
-  
-  #grid-section3 .grid {
+	grid-template-columns: repeat(4, 157px);
+	grid-template-rows: repeat(2, 100px);
+	grid-gap: 20px;
+}
+
+/* end Grid Part 1 */
+
+
+/* Grid Part 2 */
+
+#grid-section2 .gridboxblue {
+	grid-row: 1 / span 3;
+	grid-column: 2 /span 3;
+	z-index: 2;
+}
+
+#grid-section2 .gridboxred {
+	grid-row: 2 / span 1;
+	grid-column: 1 / span 2;
+	z-index: 1;
+}
+
+/* end Grid Part 2 */
+
+
+/* Grid Part 3 */
+
+#grid-section3 .grid {
 	display: grid;
-	grid-template-columns: 2fr 1fr;
 	grid-template-rows: 100px 300px 100px;
-	gap: 10px;
-  }
-  
-  #grid-section3 .box1 {
+	grid-template-columns: 452px 225px;
+	grid-gap: 10px;
+}
+
+#grid-section3 .box1 {
 	grid-column: 1 / span 2;
 	grid-row: 1 / span 1;
-  }
-  
-  #grid-section3 .box2 {
+}
+
+#grid-section3 .box2 {
+	grid-row: 2 / span 1;
 	grid-column: 2 / span 1;
+}
+
+#grid-section3 .box3 {
 	grid-row: 2 / span 1;
-  }
-  
-  #grid-section3 .box3 {
 	grid-column: 1 / span 1;
-	grid-row: 2 / span 1;
-  }
-  
-  #grid-section3 .box4 {
+}
+
+#grid-section3 .box4 {
+	grid-row: 3 / span 3;
 	grid-column: 1 / span 2;
-	grid-row: 3 / span 1;
-  }
-  
-  /* end Grid Part 3 */
-  
-  
-  /* Transition Part */
-  
-  #transition-section .box a {
+}
+
+/* end Grid Part 3 */
+
+
+/* Transition Part */
+
+#transition-section .box a {
 	display: inline-block;
 	background-color: #ccc;
 	color: #000;
 	padding: 20px;
 	text-decoration: none;
-	transition: background-color 0.5s ease, color 0.5s ease; /* Adding transition properties */
-  }
-  
-  #transition-section .box a:hover {
+	transition: background-color 3s ease, color 3s ease; 
+}
+
+#transition-section .box a:hover {
 	background-color: #cc0000;
 	color: #fff;
-	transition: background-color 3s ease, color 3s ease; /* Adjusting transition duration */
-  }
-  
-  /* end Transition Part */
-  
+	transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* end Transition Part */
