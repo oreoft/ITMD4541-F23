@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Sunset Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- import Vue before Element -->
+    <script src="https://unpkg.com/vue@2/dist/vue.js"></script>
+    <!-- import JavaScript -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<body>
+<div id="dashboard" style="background-color: #FcFFF5; border-radius: 20px; padding-bottom: 20px">
+    <el-container>
+        <el-header style="height: 100px">
+            <el-row type="flex" justify="space-between" align="middle">
+                <el-col :span="8">
+                    <el-image style="width: 100px; margin-top: 18px; border-radius: 500px"
+                              src="./img/logo.png"></el-image>
+                </el-col>
+                <el-col :span="16">
+                    <el-menu mode="horizontal"
+                             default-active="1"
+                             @select="changeIndex"
+                             background-color="#333333"
+                             text-color="#ffffff"
+                             active-text-color="#ffd04b">
+                        <el-menu-item index="1">Home</el-menu-item>
+                        <el-menu-item index="2">About</el-menu-item>
+                        <el-menu-item index="3">Contact</el-menu-item>
+                    </el-menu>
+                </el-col>
+            </el-row>
+        </el-header>
+
+        <el-main v-loading="loading"
+                 element-loading-text="Trying to load."
+                 element-loading-spinner="el-icon-loading"
+                 style="min-height: 77vh"
+                 element-loading-background="rgba(0, 0, 0, 0.8)">
+            <div class="home" v-show="index === '1'">
+                <h1>Sunrise and Sunset Times</h1>
+                <el-row style="padding-bottom: 5px">
+                    <el-button style="border-radius: 50px; padding: 2px" @click="getCurrentLocation">📍</el-button>
+                    <span>automatically location</span>
+                </el-row>
+                <el-row>
+                    <el-column style="margin-right: 15px">
+                        <el-autocomplete v-model="searchQuery"
+                                         :fetch-suggestions="querySearch"
+                                         placeholder="Enter location"
+                        >
+                        </el-autocomplete>
+                    </el-column>
+                    <el-column>
+                        <el-button type="info" @click="searchLocation()">Search</el-button>
+                    </el-column>
+                </el-row>
+                <div id="results" style="height: 50vh">
+                    <div v-if="sunriseSunsetData.timezone">
+                        <el-row>
+                            <p>Time Zone: {{ sunriseSunsetData.timezone }}</p>
+                            <p>UTC Offset: {{ sunriseSunsetData.utcOffset }}</p>
+                        </el-row>
+                        <el-row style="margin-left: 80px">
+                            <el-col :span="12" style="text-align: left;">
+                                <h3>Today</h3>
+                                <p>Sunrise: {{ sunriseSunsetData.today.sunrise }}</p>
+                                <p>Sunset: {{ sunriseSunsetData.today.sunset }}</p>
+                                <p>Solar Noon: {{ sunriseSunsetData.today.solarNoon }}</p>
+                                <p>Day Length: {{ sunriseSunsetData.today.dayLength }}</p>
+                                <p>First Light: {{ sunriseSunsetData.today.firstLight }}</p>
+                                <p>Last Light: {{ sunriseSunsetData.today.lastLight }}</p>
+                                <p>Dawn: {{ sunriseSunsetData.today.dawn }}</p>
+                                <p>Dusk: {{ sunriseSunsetData.today.dusk }}</p>
+                                <p>Golden Hour: {{ sunriseSunsetData.today.goldenHour }}</p>
+                            </el-col>
+                            <el-col :span="12" style="text-align: left;">
+                                <h3>Tomorrow</h3>
+                                <p>Sunrise: {{ sunriseSunsetData.tomorrow.sunrise }}</p>
+                                <p>Sunset: {{ sunriseSunsetData.tomorrow.sunset }}</p>
+                                <p>Solar Noon: {{ sunriseSunsetData.tomorrow.solarNoon }}</p>
+                                <p>Day Length: {{ sunriseSunsetData.tomorrow.dayLength }}</p>
+                                <p>First Light: {{ sunriseSunsetData.tomorrow.firstLight }}</p>
+                                <p>Last Light: {{ sunriseSunsetData.tomorrow.lastLight }}</p>
+                                <p>Dawn: {{ sunriseSunsetData.tomorrow.dawn }}</p>
+                                <p>Dusk: {{ sunriseSunsetData.tomorrow.dusk }}</p>
+                                <p>Golden Hour: {{ sunriseSunsetData.tomorrow.goldenHour }}</p>
+                            </el-col>
+                        </el-row>
+                    </div>
+                    <div v-if="!sunriseSunsetData.timezone">
+                        <span>NO DATA</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <div class="about" v-show="index === '2'">
+                    <h2>About the Project</h2>
+                    <p>Hello, my name is Yifan, a student at IIT. This webpage is part of my Lab 4 assignment, where I
+                        have
+                        created a web-based dashboard. The primary purpose of this dashboard is to display sunrise and
+                        sunset times for specific locations, utilizing data from an external API.</p>
+                    <p>The development of this project has been an enriching experience, offering me valuable insights
+                        into
+                        web development and API integration. I would like to extend my sincere gratitude to my
+                        Professor,
+                        Brian Bailey, for his invaluable guidance and the knowledge imparted in his course, which
+                        greatly
+                        assisted me in completing this assignment.</p>
+                </div>
+            </div>
+
+            <div class="contact" v-show="index === '3'">
+                <div>
+                    <p>If you are interested, please contact me at:</p>
+                    <a href="mailto:yzou24@hawk.iit.edu">yzou24@hawk.iit.edu</a>
+                </div>
+            </div>
+
+        </el-main>
+
+        <el-footer style="height: 80px">
+            <p>&copy; 2023 Sunrise Sunset Dashboard</p>
+            <p>Powered by <a href="https://sunrisesunset.io/" target="_blank">SunriseSunset.io</a></p>
+        </el-footer>
+
+    </el-container>
+</div>
+
+<script src="script.js"></script>
+<script>
+    new Vue({
+        el: '#dashboard',
+        data: function () {
+            return {
+                loading: false,
+                index: '1',
+                searchQuery: '',
+                defaultCities: [
+                    {value: "Chicago"},
+                    {value: "London"},
+                    {value: "Tokyo"},
+                    {value: "Paris"},
+                    {value: "Sydney"}
+                ],
+                sunriseSunsetData: {
+                    today: {},
+                    tomorrow: {},
+                    timezone: '',
+                    utcOffset: ''
+                }
+            }
+        },
+        methods: {
+            querySearch(queryString, cb) {
+                cb(this.defaultCities);
+            },
+            changeIndex(i) {
+                this.index = i
+            },
+            searchLocation() {
+                console.log('user input: ', this.searchQuery)
+                this.loading = true
+                fetch(`https://geocode.maps.co/search?q=${this.searchQuery}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let coords = data[0];
+                        console.log("Best Recommendations", coords)
+                        if (!coords) {
+                            this.noticeMsg('Sorry, your input city not find.')
+                            this.loading = false
+                            return
+                        }
+                        this.fetchSunriseSunset(coords.lat, coords.lon);
+                    })
+                    .catch(error => this.noticeMsg(error))
+                    .finally()
+            },
+            fetchSunriseSunset(lat, lon) {
+                fetch(`https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}&date=${this.getTomorrowDate()}`)
+                    .then(response => response.json())
+                    .then(data => this.displayResults(data.results, 'tomorrow'))
+                    .then(() => {
+                        fetch(`https://api.sunrisesunset.io/json?lat=${lat}&lng=${lon}&date=${this.getTodayDate()}`)
+                            .then(response => response.json())
+                            .then(data => this.displayResults(data.results, 'today'))
+                            .catch(error => this.noticeMsg(error))
+                            .finally(() => this.loading = false)
+                    })
+                    .catch(error => this.noticeMsg(error))
+            },
+            displayResults(data, type) {
+                this.updateSunriseSunsetData(data, type)
+            },
+            getCurrentLocation() {
+                this.loading = true
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(this.handlePosition, this.showError);
+                } else {
+                    this.loading = false
+                    this.noticeMsg('Geolocation is not supported by this browser.')
+                }
+            },
+            updateSunriseSunsetData(data, type) {
+                this.sunriseSunsetData[type].sunrise = data.sunrise;
+                this.sunriseSunsetData[type].sunset = data.sunset;
+                this.sunriseSunsetData[type].solarNoon = data.solar_noon;
+                this.sunriseSunsetData[type].dayLength = data.day_length;
+                this.sunriseSunsetData[type].firstLight = data.first_light;
+                this.sunriseSunsetData[type].lastLight = data.last_light;
+                this.sunriseSunsetData[type].dawn = data.dawn;
+                this.sunriseSunsetData[type].dusk = data.dusk;
+                this.sunriseSunsetData[type].goldenHour = data.golden_hour;
+                // 如果提供了时区和UTC偏移量
+                this.sunriseSunsetData.timezone = data.timezone;
+                this.sunriseSunsetData.utcOffset = `UTC${data.utc_offset >= 0 ? '+' : ''}${data.utc_offset / 60}`;
+                console.log(`${type}更新完: `, this.sunriseSunsetData[type], data)
+            },
+            formatTime(timeStr) {
+                let date = new Date(timeStr);
+                return date.toLocaleTimeString();
+            },
+            handlePosition(position) {
+                let lat = position.coords.latitude;
+                let lon = position.coords.longitude;
+                this.fetchSunriseSunset(lat, lon)
+            },
+            showError(error) {
+                // 处理错误情况
+                this.noticeMsg(error)
+            },
+            noticeMsg(msg) {
+                this.$message({
+                    showClose: true,
+                    message: msg,
+                    type: 'error'
+                });
+                this.loading = false
+            },
+            getTomorrowDate() {
+                var today = new Date();
+                var tomorrow = new Date();
+                // 将 tomorrow 对象的日期设置为今天之后的一天
+                tomorrow.setDate(today.getDate() + 1);
+                // 获取年、月、日
+                var year = tomorrow.getFullYear();
+                var month = (tomorrow.getMonth() + 1).toString().padStart(2, '0'); // 月份是从 0 开始的
+                var day = tomorrow.getDate().toString().padStart(2, '0');
+                // 拼接字符串
+                return year + '-' + month + '-' + day;
+            },
+            getTodayDate() {
+                var today = new Date();
+                // 获取年、月、日
+                var year = today.getFullYear();
+                var month = (today.getMonth() + 1).toString().padStart(2, '0'); // 月份是从 0 开始的
+                var day = today.getDate().toString().padStart(2, '0');
+                // 拼接字符串
+                return year + '-' + month + '-' + day;
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
