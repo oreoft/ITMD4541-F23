@@ -57,7 +57,7 @@ Lab4 is our course's second task, and it includes the following:
 - Task3: Submission and Testing: Complete and test the project on GitHub Pages, ensuring compatibility with both desktop
   and mobile devices, and submit the GitHub repository and Pages URLs on Blackboard by the specified deadline.
 
-Please visit the Lab3 [Link](lab-4/index.html) to see more details.
+Please visit the Lab4 [Link](lab-4/index.html) to see more details.
 
 ## Contact Information
 
